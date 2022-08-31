@@ -1,0 +1,25 @@
+<app-search (search)="handleSearch($event)"></app-search>
+
+<div class="container">
+    <section>
+        <h1>Listado de Películas</h1>
+        <mat-list role="list">
+            <mat-list-item *ngFor="let movie of movies | search:query" (click)="getDetails(movie.id)" role="listitem">
+                {{movie.title}}</mat-list-item>
+        </mat-list>
+    </section>
+
+    <section>
+        <h1>Detalle de Película</h1>
+        <div *ngFor="let detail of details">
+
+            <div class="cover">
+                <img src='https://image.tmdb.org/t/p/original/{{detail.poster_path}}' alt="{{detail.title}}">
+            </div>
+            <h2>{{detail.title}} ({{detail.release_date}})</h2>
+            <p class="text">Idioma Original: {{detail.original_language}}</p>
+            <h3>Descripción:</h3>
+            <p class="text">{{detail.overview}}</p>
+        </div>
+    </section>
+</div>
