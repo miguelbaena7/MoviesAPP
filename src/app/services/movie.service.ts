@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Movie } from '../models/movie.model';
 
 @Injectable()
 export class MovieService {
@@ -9,7 +9,7 @@ export class MovieService {
 
   constructor(private _http: HttpClient) {}
 
-  public getMovies(): Observable<any> {
-    return this._http.get(this.url + this.API_KEY);
+  public getMovies() {
+    return this._http.get<Movie>(this.url + this.API_KEY);
   }
 }
